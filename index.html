@@ -536,6 +536,232 @@
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
+        /* ===== БЛОК ОБО МНЕ ===== */
+        .about-section {
+            padding: 120px 48px;
+            background-color: var(--color-bg);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 167, 106, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .about-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+
+        .about-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .about-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .about-role {
+            color: var(--color-text-muted);
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .about-text {
+            margin-bottom: 40px;
+        }
+
+        .about-text p {
+            color: var(--color-text);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== ФУТЕР ===== */
+        .footer {
+            background-color: var(--color-surface);
+            padding: 80px 48px 40px;
+            border-top: 1px solid rgba(245, 243, 239, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--color-text);
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--color-accent);
+        }
+
+        .footer-description {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 320px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(245, 243, 239, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            transform: translateY(-2px);
+        }
+
+        .footer-heading {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-text);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-list a,
+        .footer-list span {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-list a:hover {
+            color: var(--color-text);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(245, 243, 239, 0.1);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-legal a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--color-text);
+        }
+
+        .footer-copyright p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
         /* ===== АДАПТИВНОСТЬ (ОБЩАЯ) ===== */
         @media (max-width: 968px) {
             .hero {
@@ -606,6 +832,46 @@
                 font-size: 17px;
                 padding-bottom: 40px;
             }
+
+            .about-section {
+                padding: 80px 24px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .about-title {
+                font-size: 32px;
+            }
+
+            .about-text p {
+                font-size: 15px;
+            }
+
+            .footer {
+                padding: 60px 24px 32px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+                margin-bottom: 48px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-description {
+                max-width: 100%;
+            }
         }
 
         @media (max-width: 640px) {
@@ -632,6 +898,53 @@
             .hex-label {
                 font-size: 15px;
                 padding-bottom: 34px;
+            }
+
+            .footer {
+                padding: 48px 20px 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-logo {
+                font-size: 24px;
+            }
+
+            .footer-description {
+                font-size: 14px;
+            }
+
+            .footer-heading {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+
+            .footer-list {
+                gap: 12px;
+            }
+
+            .footer-list a,
+            .footer-list span {
+                font-size: 14px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-top: 24px;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .footer-copyright p {
+                font-size: 13px;
             }
         }
 
@@ -660,163 +973,43 @@
             .amount {
                 font-size: 27px;
             }
+
+            .about-section {
+                padding: 60px 20px;
+            }
+
+            .about-image {
+                aspect-ratio: 1/1;
+            }
+
+            .about-title {
+                font-size: 28px;
+            }
+
+            .about-role {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+
+            .about-text {
+                margin-bottom: 32px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .about-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .about-actions .btn-primary,
+            .about-actions .btn-secondary {
+                text-align: center;
+            }
         }
-   /* ===== БЛОК ОБО МНЕ ===== */
-.about-section {
-    padding: 120px 48px;
-    background-color: var(--color-bg);
-}
-
-.about-container {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-}
-
-.about-image {
-    position: relative;
-    border-radius: 24px;
-    overflow: hidden;
-    aspect-ratio: 3/4;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.about-image:hover img {
-    transform: scale(1.05);
-}
-
-.about-image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(212, 167, 106, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.about-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-accent);
-    margin-bottom: 24px;
-}
-
-.about-label::before {
-    content: '';
-    width: 40px;
-    height: 1px;
-    background-color: var(--color-accent);
-}
-
-.about-title {
-    font-family: var(--font-heading);
-    font-size: clamp(32px, 4vw, 48px);
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 8px;
-}
-
-.about-role {
-    color: var(--color-text-muted);
-    font-size: 16px;
-    margin-bottom: 32px;
-}
-
-.about-text {
-    margin-bottom: 40px;
-}
-
-.about-text p {
-    color: var(--color-text);
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-.about-actions {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-/* ===== АДАПТИВНОСТЬ БЛОКА ОБО МНЕ ===== */
-@media (max-width: 968px) {
-    .about-section {
-        padding: 80px 24px;
-    }
-
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
-    .about-image {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .about-title {
-        font-size: 32px;
-    }
-
-    .about-text p {
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-section {
-        padding: 60px 20px;
-    }
-
-    .about-image {
-        aspect-ratio: 1/1;
-    }
-
-    .about-title {
-        font-size: 28px;
-    }
-
-    .about-role {
-        font-size: 14px;
-        margin-bottom: 24px;
-    }
-
-    .about-text {
-        margin-bottom: 32px;
-    }
-
-    .about-text p {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    .about-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .about-actions .btn-primary,
-    .about-actions .btn-secondary {
-        text-align: center;
-    }
-} 
     </style>
 </head>
 <body>
@@ -885,7 +1078,6 @@
             <p class="section-subtitle">Начните с одного дня или получите максимум выгоды с месячной подпиской</p>
 
             <div class="pricing-grid">
-                <!-- Дневной тариф -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Дневной</h3>
@@ -906,7 +1098,6 @@
                     </div>
                 </div>
 
-                <!-- Месячный тариф -->
                 <div class="pricing-card pricing-featured">
                     <div class="pricing-badge">Рекомендуем</div>
                     <div class="pricing-header">
@@ -945,7 +1136,6 @@
             <p class="section-subtitle">Каждое место проверено лично — от троп до лучших точек для заката</p>
 
             <div class="honeycomb">
-                <!-- Верхний ряд: 3 локации -->
                 <div class="hex-row">
                     <div class="hex-shadow">
                         <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1551524559-5af45d5450bd?q=80&w=900&auto=format&fit=crop');">
@@ -966,7 +1156,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Нижний ряд: 1 локация по центру -->
                 <div class="hex-row">
                     <div class="hex-shadow">
                         <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop');">
@@ -978,104 +1167,102 @@
             </div>
         </div>
     </section>
-<!-- БЛОК ОБО МНЕ -->
-<section class="about-section" id="founder">
-    <div class="about-container">
-        <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop" alt="Владислав Копылов" />
-            <div class="about-image-overlay"></div>
-        </div>
-        <div class="about-content">
-            <span class="about-label">Основатель проекта</span>
-            <h2 class="about-title">Владислав Копылов</h2>
-            <p class="about-role">Руководитель компании «Твой Ориентир»</p>
-            
-            <div class="about-text">
-                <p>Я живу на Байкале и знаю эти места не по путеводителям, а по собственному опыту. Каждый маршрут в клубе — это результат моих личных путешествий, встреч с местными жителями и десятков проверок.</p>
-                
-                <p>Создал «Твой Ориентир», потому что устал видеть, как туристов возят по заезженным маршрутам, завышают цены и не рассказывают о truly аутентичных местах. Здесь я делюсь тем, что знаю сам: где найти уединённую бухту, какой гид действительно любит своё дело, в какой базе кормят домашней едой.</p>
-                
-                <p>Моя цель — чтобы ваше путешествие на Байкал было безопасным, честным и незабываемым. Без толп, без наценок, без разочарований.</p>
+
+    <!-- БЛОК ОБО МНЕ -->
+    <section class="about-section" id="founder">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop" alt="Владислав Копылов" />
+                <div class="about-image-overlay"></div>
             </div>
-            
-            <div class="about-actions">
-                <a href="#pricing" class="btn-primary">Присоединиться к клубу</a>
-                <a href="mailto:vladislav@tvoy-orientir.ru" class="btn-secondary">Написать мне</a>
+            <div class="about-content">
+                <span class="about-label">Основатель проекта</span>
+                <h2 class="about-title">Владислав Копылов</h2>
+                <p class="about-role">Руководитель компании «Твой Ориентир»</p>
+
+                <div class="about-text">
+                    <p>Я живу на Байкале и знаю эти места не по путеводителям, а по собственному опыту. Каждый маршрут в клубе — это результат моих личных путешествий, встреч с местными жителями и десятков проверок.</p>
+
+                    <p>Создал «Твой Ориентир», потому что устал видеть, как туристов возят по заезженным маршрутам, завышают цены и не рассказывают о по-настоящему аутентичных местах. Здесь я делюсь тем, что знаю сам: где найти уединённую бухту, какой гид действительно любит своё дело, в какой базе кормят домашней едой.</p>
+
+                    <p>Моя цель — чтобы ваше путешествие на Байкал было безопасным, честным и незабываемым. Без толп, без наценок, без разочарований.</p>
+                </div>
+
+                <div class="about-actions">
+                    <a href="#pricing" class="btn-primary">Присоединиться к клубу</a>
+                    <a href="mailto:vladislav@tvoy-orientir.ru" class="btn-secondary">Написать мне</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-    <script>
-        <!-- ФУТЕР -->
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Верхняя часть: 3 колонки -->
-        <div class="footer-grid">
-            <!-- Колонка 1: Бренд -->
-            <div class="footer-col footer-brand">
-                <a href="./" class="footer-logo">Твой <span>Ориентир</span></a>
-                <p class="footer-description">
-                    Закрытый клуб самостоятельных путешественников. Проверенные маршруты, гиды и базы отдыха на Байкале от местного жителя.
-                </p>
-                <div class="footer-social">
-                    <a href="#" class="social-link" aria-label="Telegram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="currentColor"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="ВКонтакте">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.07 12.93c0 .2-.01.4-.02.6h-2.79c-.23.01-.44-.12-.56-.33-.36-.6-.79-1.17-1.27-1.69-.18-.19-.37-.37-.57-.53-.34-.27-.59-.15-.73.25-.15.41-.18.87-.18 1.33 0 .22-.11.35-.33.35h-2.98c-.32 0-.34-.01-.34-.34v-.04c-.01-.88-.01-1.76-.01-2.64 0-.2-.01-.4-.03-.6-.03-.31-.18-.44-.49-.44H9.74c-.25 0-.38-.12-.38-.37v-.06c.01-.35.01-.7.01-1.05 0-.22.1-.34.32-.34h3.23c.27 0 .4.13.4.4v1.73c0 .2.01.4.03.6.03.31.18.44.49.44.32 0 .5-.13.67-.4.42-.66.74-1.38.93-2.14.07-.29.18-.43.48-.43h2.92c.24 0 .35.13.32.37-.09.63-.47 1.51-1.18 2.52-.32.45-.32.67.01 1.11.71.94 1.11 1.62 1.52 2.52.13.29.01.43-.3.43h-2.91z" fill="currentColor"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="YouTube">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8 0 12 0 12s0 4 .5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.8.5-5.8.5-5.8s0-4-.5-5.8zM9.5 15.5V8.5l6.3 3.5-6.3 3.5z" fill="currentColor"/>
-                        </svg>
-                    </a>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="./" class="footer-logo">Твой <span>Ориентир</span></a>
+                    <p class="footer-description">
+                        Закрытый клуб самостоятельных путешественников. Проверенные маршруты, гиды и базы отдыха на Байкале от местного жителя.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="ВКонтакте">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.07 12.93c0 .2-.01.4-.02.6h-2.79c-.23.01-.44-.12-.56-.33-.36-.6-.79-1.17-1.27-1.69-.18-.19-.37-.37-.57-.53-.34-.27-.59-.15-.73.25-.15.41-.18.87-.18 1.33 0 .22-.11.35-.33.35h-2.98c-.32 0-.34-.01-.34-.34v-.04c-.01-.88-.01-1.76-.01-2.64 0-.2-.01-.4-.03-.6-.03-.31-.18-.44-.49-.44H9.74c-.25 0-.38-.12-.38-.37v-.06c.01-.35.01-.7.01-1.05 0-.22.1-.34.32-.34h3.23c.27 0 .4.13.4.4v1.73c0 .2.01.4.03.6.03.31.18.44.49.44.32 0 .5-.13.67-.4.42-.66.74-1.38.93-2.14.07-.29.18-.43.48-.43h2.92c.24 0 .35.13.32.37-.09.63-.47 1.51-1.18 2.52-.32.45-.32.67.01 1.11.71.94 1.11 1.62 1.52 2.52.13.29.01.43-.3.43h-2.91z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8 0 12 0 12s0 4 .5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.8.5-5.8.5-5.8s0-4-.5-5.8zM9.5 15.5V8.5l6.3 3.5-6.3 3.5z" fill="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col footer-nav">
+                    <h4 class="footer-heading">Навигация</h4>
+                    <ul class="footer-list">
+                        <li><a href="#about">О клубе</a></li>
+                        <li><a href="#locations">Локации</a></li>
+                        <li><a href="#founder">Обо мне</a></li>
+                        <li><a href="#pricing">Тарифы</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-contact">
+                    <h4 class="footer-heading">Контакты</h4>
+                    <ul class="footer-list">
+                        <li>
+                            <a href="mailto:vladislav@tvoy-orientir.ru">vladislav@tvoy-orientir.ru</a>
+                        </li>
+                        <li>
+                            <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+                        </li>
+                        <li>
+                            <span>Иркутская область, Россия</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Колонка 2: Навигация -->
-            <div class="footer-col footer-nav">
-                <h4 class="footer-heading">Навигация</h4>
-                <ul class="footer-list">
-                    <li><a href="#about">О клубе</a></li>
-                    <li><a href="#locations">Локации</a></li>
-                    <li><a href="#founder">Обо мне</a></li>
-                    <li><a href="#pricing">Тарифы</a></li>
-                </ul>
-            </div>
-
-            <!-- Колонка 3: Контакты -->
-            <div class="footer-col footer-contact">
-                <h4 class="footer-heading">Контакты</h4>
-                <ul class="footer-list">
-                    <li>
-                        <a href="mailto:vladislav@tvoy-orientir.ru">vladislav@tvoy-orientir.ru</a>
-                    </li>
-                    <li>
-                        <a href="tel:+79001234567">+7 (900) 123-45-67</a>
-                    </li>
-                    <li>
-                        <span>Иркутская область, Россия</span>
-                    </li>
-                </ul>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Договор оферты</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2026 Твой Ориентир. ИП Копылов В.С. Все права защищены.</p>
+                </div>
             </div>
         </div>
+    </footer>
 
-        <!-- Нижняя часть: Юридическая информация -->
-        <div class="footer-bottom">
-            <div class="footer-legal">
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">Договор оферты</a>
-            </div>
-            <div class="footer-copyright">
-                <p>© 2026 Твой Ориентир. ИП Копылов В.С. Все права защищены.</p>
-            </div>
-        </div>
-    </div>
-</footer>
+    <script>
         // Хедер становится непрозрачным при скролле
         const header = document.querySelector('.header');
         window.addEventListener('scroll', () => {
