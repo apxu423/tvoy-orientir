@@ -343,7 +343,7 @@
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -376,6 +376,9 @@
     position: relative;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .pricing-card:hover {
@@ -453,6 +456,7 @@
 .pricing-features {
     list-style: none;
     margin-bottom: 30px;
+    flex-grow: 1;
 }
 
 .pricing-features li {
@@ -475,6 +479,10 @@
     top: 8px;
 }
 
+.pricing-button-wrapper {
+    margin-top: auto;
+}
+
 .btn-pricing {
     display: block;
     text-align: center;
@@ -484,6 +492,7 @@
     font-weight: 600;
     font-size: 14px;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .btn-primary-pricing {
@@ -519,6 +528,32 @@
 
 .pricing-guarantee strong {
     color: var(--color-text);
+}
+
+/* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
+@media (max-width: 968px) {
+    .pricing-section {
+        padding: 45px 18px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .pricing-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-card {
+        padding: 24px 18px;
+    }
+
+    .amount {
+        font-size: 27px;
+    }
 }
 
 /* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
@@ -644,7 +679,7 @@
                     <h3>Дневной</h3>
                     <div class="price">
                         <span class="amount">300₽</span>
-                        <span class="period">/ 1 день</span>
+                        <span class="period">/день</span>
                     </div>
                 </div>
                 <p class="pricing-description">Полный доступ ко всему, чтобы протестировать сервис</p>
@@ -654,7 +689,9 @@
                     <li>Библиотека гайдов (PDF)</li>
                     <li>Личная поддержка в чате</li>
                 </ul>
-                <a href="#" class="btn-pricing btn-secondary-pricing">Попробовать</a>
+                <div class="pricing-button-wrapper">
+                    <a href="#" class="btn-pricing btn-secondary-pricing">Попробовать</a>
+                </div>
             </div>
 
             <!-- Месячный тариф -->
@@ -675,14 +712,16 @@
                     <li>Эксклюзивные скидки от партнеров</li>
                     <li>Приоритетная поддержка 24/7</li>
                     <li>Закрытые встречи клуба</li>
-                    <li>Гарантия возврата 3 дня</li>
+                    <li>Гарантия возврата 1 день</li>
                 </ul>
-                <a href="#" class="btn-pricing btn-primary-pricing">Стать участником</a>
+                <div class="pricing-button-wrapper">
+                    <a href="#" class="btn-pricing btn-primary-pricing">Стать участником</a>
+                </div>
             </div>
         </div>
 
         <div class="pricing-guarantee">
-            <p>💎 <strong>Гарантия возврата:</strong> Если в течение 3 дней вы поймете, что клуб вам не подходит — мы вернем вам деньги</p>
+            <p>💎 <strong>Гарантия возврата:</strong> Если в течение 1 дня вы поймете, что клуб вам не подходит — вернем деньги без вопросов</p>
         </div>
     </div>
 </section>
