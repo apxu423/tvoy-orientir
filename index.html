@@ -661,6 +661,162 @@
                 font-size: 27px;
             }
         }
+   /* ===== БЛОК ОБО МНЕ ===== */
+.about-section {
+    padding: 120px 48px;
+    background-color: var(--color-bg);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.about-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 167, 106, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.about-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+}
+
+.about-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-accent);
+}
+
+.about-title {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+
+.about-role {
+    color: var(--color-text-muted);
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+.about-text {
+    margin-bottom: 40px;
+}
+
+.about-text p {
+    color: var(--color-text);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ===== АДАПТИВНОСТЬ БЛОКА ОБО МНЕ ===== */
+@media (max-width: 968px) {
+    .about-section {
+        padding: 80px 24px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .about-image {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .about-title {
+        font-size: 32px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 60px 20px;
+    }
+
+    .about-image {
+        aspect-ratio: 1/1;
+    }
+
+    .about-title {
+        font-size: 28px;
+    }
+
+    .about-role {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .about-text {
+        margin-bottom: 32px;
+    }
+
+    .about-text p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .about-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about-actions .btn-primary,
+    .about-actions .btn-secondary {
+        text-align: center;
+    }
+} 
     </style>
 </head>
 <body>
@@ -671,6 +827,7 @@
         <nav class="nav">
             <a href="#about">О клубе</a>
             <a href="#locations">Локации</a>
+            <a href="#founder">Обо мне</a>
             <a href="#pricing">Тарифы</a>
             <a href="#pricing" class="btn">Стать участником</a>
         </nav>
@@ -821,7 +978,33 @@
             </div>
         </div>
     </section>
-
+<!-- БЛОК ОБО МНЕ -->
+<section class="about-section" id="founder">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop" alt="Владислав Копылов" />
+            <div class="about-image-overlay"></div>
+        </div>
+        <div class="about-content">
+            <span class="about-label">Основатель проекта</span>
+            <h2 class="about-title">Владислав Копылов</h2>
+            <p class="about-role">Руководитель компании «Твой Ориентир»</p>
+            
+            <div class="about-text">
+                <p>Я живу на Байкале и знаю эти места не по путеводителям, а по собственному опыту. Каждый маршрут в клубе — это результат моих личных путешествий, встреч с местными жителями и десятков проверок.</p>
+                
+                <p>Создал «Твой Ориентир», потому что устал видеть, как туристов возят по заезженным маршрутам, завышают цены и не рассказывают о truly аутентичных местах. Здесь я делюсь тем, что знаю сам: где найти уединённую бухту, какой гид действительно любит своё дело, в какой базе кормят домашней едой.</p>
+                
+                <p>Моя цель — чтобы ваше путешествие на Байкал было безопасным, честным и незабываемым. Без толп, без наценок, без разочарований.</p>
+            </div>
+            
+            <div class="about-actions">
+                <a href="#pricing" class="btn-primary">Присоединиться к клубу</a>
+                <a href="mailto:vladislav@tvoy-orientir.ru" class="btn-secondary">Написать мне</a>
+            </div>
+        </div>
+    </div>
+</section>
     <script>
         // Хедер становится непрозрачным при скролле
         const header = document.querySelector('.header');
