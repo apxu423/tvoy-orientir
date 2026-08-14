@@ -336,9 +336,9 @@
                 font-size: 15px;
             }
         }
-    /* ===== БЛОК ТАРИФОВ ===== */
+   /* ===== БЛОК ТАРИФОВ ===== */
 .pricing-section {
-    padding: 100px 48px;
+    padding: 75px 36px;
     background-color: var(--color-bg);
 }
 
@@ -349,37 +349,37 @@
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(32px, 4vw, 48px);
+    font-size: clamp(24px, 3vw, 36px);
     font-weight: 500;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .section-subtitle {
     text-align: center;
     color: var(--color-text-muted);
-    font-size: 18px;
-    margin-bottom: 64px;
+    font-size: 14px;
+    margin-bottom: 48px;
 }
 
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    margin-bottom: 48px;
+    gap: 24px;
+    margin-bottom: 36px;
 }
 
 .pricing-card {
     background-color: var(--color-surface);
-    border-radius: 24px;
-    padding: 48px 40px;
+    border-radius: 18px;
+    padding: 36px 30px;
     position: relative;
     border: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 .pricing-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
     border-color: var(--color-accent);
 }
 
@@ -390,95 +390,99 @@
 
 .pricing-badge {
     position: absolute;
-    top: -12px;
-    right: 32px;
+    top: -9px;
+    right: 24px;
     background-color: var(--color-accent);
     color: var(--color-bg);
-    padding: 8px 20px;
+    padding: 6px 15px;
     border-radius: 100px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .pricing-header {
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 .pricing-header h3 {
     font-family: var(--font-heading);
-    font-size: 28px;
+    font-size: 21px;
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .price {
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 6px;
+    margin-bottom: 6px;
 }
 
 .amount {
     font-family: var(--font-heading);
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 600;
     color: var(--color-text);
 }
 
 .period {
     color: var(--color-text-muted);
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .savings {
     display: inline-block;
     background-color: rgba(212, 167, 106, 0.15);
     color: var(--color-accent);
-    padding: 4px 12px;
+    padding: 3px 9px;
     border-radius: 100px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 
 .pricing-description {
     color: var(--color-text-muted);
-    font-size: 15px;
-    margin-bottom: 32px;
-    line-height: 1.6;
+    font-size: 13px;
+    margin-bottom: 24px;
+    line-height: 1.5;
 }
 
 .pricing-features {
     list-style: none;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .pricing-features li {
-    padding: 12px 0;
+    padding: 8px 0;
     color: var(--color-text);
-    font-size: 15px;
+    font-size: 13px;
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
+    position: relative;
+    padding-left: 20px;
 }
 
 .pricing-features li::before {
     content: "✓";
     color: var(--color-accent);
     font-weight: bold;
-    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    top: 8px;
 }
 
 .btn-pricing {
     display: block;
     text-align: center;
-    padding: 18px 36px;
+    padding: 14px 27px;
     border-radius: 100px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     transition: all 0.3s ease;
 }
 
@@ -505,16 +509,42 @@
 
 .pricing-guarantee {
     text-align: center;
-    padding: 32px;
+    padding: 24px;
     background-color: var(--color-surface);
-    border-radius: 16px;
+    border-radius: 12px;
     color: var(--color-text-muted);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .pricing-guarantee strong {
     color: var(--color-text);
+}
+
+/* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
+@media (max-width: 968px) {
+    .pricing-section {
+        padding: 45px 18px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .pricing-card {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-card {
+        padding: 24px 18px;
+    }
+
+    .amount {
+        font-size: 27px;
+    }
 }
 
 /* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
@@ -605,55 +635,54 @@
 <section class="pricing-section" id="pricing">
     <div class="container">
         <h2 class="section-title">Выберите свой формат</h2>
-        <p class="section-subtitle">Начните с пробного периода или получите максимум выгоды с годовой подпиской</p>
+        <p class="section-subtitle">Начните с одного дня или получите максимум выгоды с месячной подпиской</p>
         
         <div class="pricing-grid">
-            <!-- Пробный тариф -->
+            <!-- Дневной тариф -->
             <div class="pricing-card">
                 <div class="pricing-header">
-                    <h3>Пробный</h3>
+                    <h3>Дневной</h3>
                     <div class="price">
-                        <span class="amount">149₽</span>
-                        <span class="period">/ 7 дней</span>
+                        <span class="amount">300₽</span>
+                        <span class="period">/ 1 день</span>
                     </div>
                 </div>
-                <p class="pricing-description">Полный доступ ко всему, чтобы убедиться, что это того стоит</p>
+                <p class="pricing-description">Полный доступ ко всему, чтобы протестировать сервис</p>
                 <ul class="pricing-features">
-                    <li>✓ Все авторские маршруты</li>
-                    <li>✓ База проверенных партнеров</li>
-                    <li>✓ Библиотека гайдов (PDF)</li>
-                    <li>✓ Оффлайн-карты для Maps.me</li>
-                    <li>✓ Личная поддержка в чате</li>
+                    <li>Все авторские маршруты</li>
+                    <li>База проверенных партнеров</li>
+                    <li>Библиотека гайдов (PDF)</li>
+                    <li>Личная поддержка в чате</li>
                 </ul>
                 <a href="#" class="btn-pricing btn-secondary-pricing">Попробовать</a>
             </div>
 
-            <!-- Годовой тариф -->
+            <!-- Месячный тариф -->
             <div class="pricing-card pricing-featured">
                 <div class="pricing-badge">Рекомендуем</div>
                 <div class="pricing-header">
-                    <h3>Годовой</h3>
+                    <h3>Месячный</h3>
                     <div class="price">
-                        <span class="amount">2 990₽</span>
-                        <span class="period">/ год</span>
+                        <span class="amount">1 500₽</span>
+                        <span class="period">/ месяц</span>
                     </div>
-                    <div class="savings">Экономия 80%</div>
+                    <div class="savings">Экономия 83%</div>
                 </div>
-                <p class="pricing-description">Все обновления + приоритетная поддержка на весь год</p>
+                <p class="pricing-description">Все обновления + приоритетная поддержка на весь месяц</p>
                 <ul class="pricing-features">
-                    <li>✓ Все из пробного тарифа</li>
-                    <li>✓ Новые маршруты каждый месяц</li>
-                    <li>✓ Эксклюзивные скидки от партнеров</li>
-                    <li>✓ Приоритетная поддержка 24/7</li>
-                    <li>✓ Закрытые встречи клуба</li>
-                    <li>✓ Гарантия возврата 3 дня</li>
+                    <li>Все из дневного тарифа</li>
+                    <li>Новые маршруты каждую неделю</li>
+                    <li>Эксклюзивные скидки от партнеров</li>
+                    <li>Приоритетная поддержка 24/7</li>
+                    <li>Закрытые встречи клуба</li>
+                    <li>Гарантия возврата 3 дня</li>
                 </ul>
                 <a href="#" class="btn-pricing btn-primary-pricing">Стать участником</a>
             </div>
         </div>
 
         <div class="pricing-guarantee">
-            <p>💎 <strong>Гарантия возврата:</strong> Если в течение 3 дней вы поймете, что клуб вам не подходит — вернем деньги без вопросов</p>
+            <p>💎 <strong>Гарантия возврата:</strong> Если в течение 3 дней вы поймете, что клуб вам не подходит — мы вернем вам деньги</p>
         </div>
     </div>
 </section>
