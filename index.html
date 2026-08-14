@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Твой Ориентир | Закрытый клуб путешествий по Байкалу</title>
     <meta name="description" content="Проверенные маршруты, гиды и базы отдыха на Байкале от местного жителя. Авторские гайды и оффлайн-карты для самостоятельных путешественников.">
-    
+
     <!-- Шрифты: Playfair Display (заголовки) + Manrope (текст) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ===== БАЗОВЫЕ СТИЛИ ===== */
         * {
@@ -110,14 +110,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 100vh;
-            min-height: 100svh; /* Для мобильных браузеров */
+            min-height: 100svh;
         }
 
-        /* Левая часть — медиа */
         .hero-media {
             position: relative;
             background-color: #1A2028;
-            background-image: 
+            background-image:
                 linear-gradient(135deg, rgba(15, 20, 25, 0.3) 0%, rgba(15, 20, 25, 0.7) 100%),
                 url('https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
@@ -133,7 +132,6 @@
             pointer-events: none;
         }
 
-        /* Правая часть — контент */
         .hero-content {
             display: flex;
             flex-direction: column;
@@ -281,7 +279,264 @@
             }
         }
 
-        /* ===== АДАПТИВНОСТЬ ===== */
+        /* ===== БЛОК ТАРИФОВ ===== */
+        .pricing-section {
+            padding: 75px 36px;
+            background-color: var(--color-bg);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 14px;
+            margin-bottom: 48px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 36px;
+        }
+
+        .pricing-card {
+            background-color: var(--color-surface);
+            border-radius: 18px;
+            padding: 36px 30px;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-accent);
+        }
+
+        .pricing-featured {
+            background: linear-gradient(135deg, var(--color-surface) 0%, #1F2732 100%);
+            border-color: var(--color-accent);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -9px;
+            right: 24px;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 6px 15px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-header {
+            margin-bottom: 18px;
+        }
+
+        .pricing-header h3 {
+            font-family: var(--font-heading);
+            font-size: 21px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .amount {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .period {
+            color: var(--color-text-muted);
+            font-size: 12px;
+        }
+
+        .savings {
+            display: inline-block;
+            background-color: rgba(212, 167, 106, 0.15);
+            color: var(--color-accent);
+            padding: 3px 9px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .pricing-description {
+            color: var(--color-text-muted);
+            font-size: 13px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            color: var(--color-text);
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--color-accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        .pricing-button-wrapper {
+            margin-top: auto;
+        }
+
+        .btn-pricing {
+            display: block;
+            text-align: center;
+            padding: 14px 27px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary-pricing {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        .btn-primary-pricing:hover {
+            background-color: #E5B87B;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary-pricing {
+            background-color: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-text-muted);
+        }
+
+        .btn-secondary-pricing:hover {
+            border-color: var(--color-text);
+            background-color: rgba(245, 243, 239, 0.05);
+        }
+
+        .pricing-guarantee {
+            text-align: center;
+            padding: 24px;
+            background-color: var(--color-surface);
+            border-radius: 12px;
+            color: var(--color-text-muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .pricing-guarantee strong {
+            color: var(--color-text);
+        }
+
+        /* ===== БЛОК ЛОКАЦИЙ (СОТЫ) ===== */
+        .locations-section {
+            padding: 100px 36px;
+            background-color: var(--color-surface);
+        }
+
+        .honeycomb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 64px;
+        }
+
+        .hex-row {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+        }
+
+        .hex-row + .hex-row {
+            margin-top: -62px;
+        }
+
+        .hex-shadow {
+            filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+            transition: transform 0.35s ease;
+        }
+
+        .hex-shadow:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .hex {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            width: 260px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            position: relative;
+            text-decoration: none;
+        }
+
+        .hex-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 20, 25, 0) 40%, rgba(15, 20, 25, 0.8) 100%);
+        }
+
+        .hex-label {
+            position: relative;
+            z-index: 2;
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--color-text);
+            text-align: center;
+            padding-bottom: 52px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ===== АДАПТИВНОСТЬ (ОБЩАЯ) ===== */
         @media (max-width: 968px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -316,6 +571,68 @@
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
+
+            .pricing-section {
+                padding: 45px 18px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .pricing-card {
+                padding: 30px 24px;
+            }
+
+            .locations-section {
+                padding: 60px 18px;
+            }
+
+            .hex {
+                width: 190px;
+                height: 220px;
+            }
+
+            .hex-row {
+                gap: 16px;
+            }
+
+            .hex-row + .hex-row {
+                margin-top: -45px;
+            }
+
+            .hex-label {
+                font-size: 17px;
+                padding-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .honeycomb {
+                display: grid;
+                grid-template-columns: repeat(2, auto);
+                gap: 16px;
+                justify-content: center;
+            }
+
+            .hex-row {
+                display: contents;
+            }
+
+            .hex-row + .hex-row {
+                margin-top: 0;
+            }
+
+            .hex {
+                width: 160px;
+                height: 185px;
+            }
+
+            .hex-label {
+                font-size: 15px;
+                padding-bottom: 34px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -335,405 +652,26 @@
                 padding: 16px 28px;
                 font-size: 15px;
             }
+
+            .pricing-card {
+                padding: 24px 18px;
+            }
+
+            .amount {
+                font-size: 27px;
+            }
         }
-   /* ===== БЛОК ТАРИФОВ ===== */
-.pricing-section {
-    padding: 75px 36px;
-    background-color: var(--color-bg);
-}
-
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(24px, 3vw, 36px);
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 12px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: 14px;
-    margin-bottom: 48px;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 36px;
-}
-
-.pricing-card {
-    background-color: var(--color-surface);
-    border-radius: 18px;
-    padding: 36px 30px;
-    position: relative;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.pricing-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--color-accent);
-}
-
-.pricing-featured {
-    background: linear-gradient(135deg, var(--color-surface) 0%, #1F2732 100%);
-    border-color: var(--color-accent);
-}
-
-.pricing-badge {
-    position: absolute;
-    top: -9px;
-    right: 24px;
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-    padding: 6px 15px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.pricing-header {
-    margin-bottom: 18px;
-}
-
-.pricing-header h3 {
-    font-family: var(--font-heading);
-    font-size: 21px;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-.price {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 6px;
-}
-
-.amount {
-    font-family: var(--font-heading);
-    font-size: 36px;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.period {
-    color: var(--color-text-muted);
-    font-size: 12px;
-}
-
-.savings {
-    display: inline-block;
-    background-color: rgba(212, 167, 106, 0.15);
-    color: var(--color-accent);
-    padding: 3px 9px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    margin-top: 6px;
-}
-
-.pricing-description {
-    color: var(--color-text-muted);
-    font-size: 13px;
-    margin-bottom: 24px;
-    line-height: 1.5;
-}
-
-.pricing-features {
-    list-style: none;
-    margin-bottom: 30px;
-    flex-grow: 1;
-}
-
-.pricing-features li {
-    padding: 8px 0;
-    color: var(--color-text);
-    font-size: 13px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    position: relative;
-    padding-left: 20px;
-}
-
-.pricing-features li::before {
-    content: "✓";
-    color: var(--color-accent);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-    top: 8px;
-}
-
-.pricing-button-wrapper {
-    margin-top: auto;
-}
-
-.btn-pricing {
-    display: block;
-    text-align: center;
-    padding: 14px 27px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-primary-pricing {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-}
-
-.btn-primary-pricing:hover {
-    background-color: #E5B87B;
-    transform: translateY(-2px);
-}
-
-.btn-secondary-pricing {
-    background-color: transparent;
-    color: var(--color-text);
-    border: 2px solid var(--color-text-muted);
-}
-
-.btn-secondary-pricing:hover {
-    border-color: var(--color-text);
-    background-color: rgba(245, 243, 239, 0.05);
-}
-
-.pricing-guarantee {
-    text-align: center;
-    padding: 24px;
-    background-color: var(--color-surface);
-    border-radius: 12px;
-    color: var(--color-text-muted);
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.pricing-guarantee strong {
-    color: var(--color-text);
-}
-
-/* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
-@media (max-width: 968px) {
-    .pricing-section {
-        padding: 45px 18px;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .pricing-card {
-        padding: 30px 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .pricing-card {
-        padding: 24px 18px;
-    }
-
-    .amount {
-        font-size: 27px;
-    }
-}
-
-/* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
-@media (max-width: 968px) {
-    .pricing-section {
-        padding: 45px 18px;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .pricing-card {
-        padding: 30px 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .pricing-card {
-        padding: 24px 18px;
-    }
-
-    .amount {
-        font-size: 27px;
-    }
-}
-
-/* ===== АДАПТИВНОСТЬ ТАРИФОВ ===== */
-@media (max-width: 968px) {
-    .pricing-section {
-        padding: 60px 24px;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .pricing-card {
-        padding: 40px 32px;
-    }
-}
-
-@media (max-width: 480px) {
-    .pricing-card {
-        padding: 32px 24px;
-    }
-
-    .amount {
-        font-size: 36px;
-    }
-}
-/* ===== БЛОК ЛОКАЦИЙ (СОТЫ) ===== */
-.locations-section {
-    padding: 100px 36px;
-    background-color: var(--color-surface);
-}
-
-.honeycomb {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 64px;
-}
-
-.hex-row {
-    display: flex;
-    gap: 28px;
-    justify-content: center;
-}
-
-/* Соты внахлёст, как в пчелиных сотах */
-.hex-row + .hex-row {
-    margin-top: -62px;
-}
-
-.hex-shadow {
-    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
-    transition: transform 0.35s ease;
-}
-
-.hex-shadow:hover {
-    transform: translateY(-8px) scale(1.03);
-}
-
-.hex {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: 260px;
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    position: relative;
-    text-decoration: none;
-}
-
-/* Затемнение снизу для читаемости текста */
-.hex-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15, 20, 25, 0) 40%, rgba(15, 20, 25, 0.8) 100%);
-}
-
-.hex-label {
-    position: relative;
-    z-index: 2;
-    font-family: var(--font-heading);
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--color-text);
-    text-align: center;
-    padding-bottom: 52px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* ===== АДАПТИВНОСТЬ СОТ ===== */
-@media (max-width: 968px) {
-    .locations-section {
-        padding: 60px 18px;
-    }
-
-    .hex {
-        width: 190px;
-        height: 220px;
-    }
-
-    .hex-row {
-        gap: 16px;
-    }
-
-    .hex-row + .hex-row {
-        margin-top: -45px;
-    }
-
-    .hex-label {
-        font-size: 17px;
-        padding-bottom: 40px;
-    }
-}
-
-@media (max-width: 640px) {
-    .honeycomb {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        gap: 16px;
-        justify-content: center;
-    }
-
-    .hex-row {
-        display: contents;
-    }
-
-    .hex-row + .hex-row {
-        margin-top: 0;
-    }
-
-    .hex {
-        width: 160px;
-        height: 185px;
-    }
-
-    .hex-label {
-        font-size: 15px;
-        padding-bottom: 34px;
-    }
-}
     </style>
 </head>
 <body>
 
     <!-- ХЕДЕР -->
     <header class="header">
-        <a href="/" class="logo">Твой <span>Ориентир</span></a>
+        <a href="./" class="logo">Твой <span>Ориентир</span></a>
         <nav class="nav">
             <a href="#about">О клубе</a>
-            <a href="#blog">Блог</a>
-            <a href="#partners">Партнерам</a>
+            <a href="#locations">Локации</a>
+            <a href="#pricing">Тарифы</a>
             <a href="#pricing" class="btn">Стать участником</a>
         </nav>
     </header>
@@ -747,7 +685,7 @@
                 Байкал без толп <em>и наценок</em>
             </h1>
             <p class="hero-subtitle">
-                Проверенные маршруты, гиды и базы отдыха от местного жителя. 
+                Проверенные маршруты, гиды и базы отдыха от местного жителя.
                 Авторские гайды и оффлайн-карты для самостоятельных путешествий.
             </p>
             <div class="hero-actions">
@@ -782,65 +720,108 @@
             </div>
         </div>
     </section>
-<!-- БЛОК ТАРИФОВ -->
-<section class="pricing-section" id="pricing">
-    <div class="container">
-        <h2 class="section-title">Выберите свой формат</h2>
-        <p class="section-subtitle">Начните с одного дня или получите максимум выгоды с месячной подпиской</p>
-        
-        <div class="pricing-grid">
-            <!-- Дневной тариф -->
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <h3>Дневной</h3>
-                    <div class="price">
-                        <span class="amount">300₽</span>
-                        <span class="period">/день</span>
+
+    <!-- БЛОК ТАРИФОВ -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Выберите свой формат</h2>
+            <p class="section-subtitle">Начните с одного дня или получите максимум выгоды с месячной подпиской</p>
+
+            <div class="pricing-grid">
+                <!-- Дневной тариф -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Дневной</h3>
+                        <div class="price">
+                            <span class="amount">300₽</span>
+                            <span class="period">/день</span>
+                        </div>
+                    </div>
+                    <p class="pricing-description">Полный доступ ко всему, чтобы протестировать сервис</p>
+                    <ul class="pricing-features">
+                        <li>Все авторские маршруты</li>
+                        <li>База проверенных партнеров</li>
+                        <li>Библиотека гайдов (PDF)</li>
+                        <li>Личная поддержка в чате</li>
+                    </ul>
+                    <div class="pricing-button-wrapper">
+                        <a href="#" class="btn-pricing btn-secondary-pricing">Попробовать</a>
                     </div>
                 </div>
-                <p class="pricing-description">Полный доступ ко всему, чтобы протестировать сервис</p>
-                <ul class="pricing-features">
-                    <li>Все авторские маршруты</li>
-                    <li>База проверенных партнеров</li>
-                    <li>Библиотека гайдов (PDF)</li>
-                    <li>Личная поддержка в чате</li>
-                </ul>
-                <div class="pricing-button-wrapper">
-                    <a href="#" class="btn-pricing btn-secondary-pricing">Попробовать</a>
+
+                <!-- Месячный тариф -->
+                <div class="pricing-card pricing-featured">
+                    <div class="pricing-badge">Рекомендуем</div>
+                    <div class="pricing-header">
+                        <h3>Месячный</h3>
+                        <div class="price">
+                            <span class="amount">1 500₽</span>
+                            <span class="period">/ месяц</span>
+                        </div>
+                        <div class="savings">Экономия 83%</div>
+                    </div>
+                    <p class="pricing-description">Все обновления + приоритетная поддержка на весь месяц</p>
+                    <ul class="pricing-features">
+                        <li>Все из дневного тарифа</li>
+                        <li>Новые маршруты каждую неделю</li>
+                        <li>Эксклюзивные скидки от партнеров</li>
+                        <li>Приоритетная поддержка 24/7</li>
+                        <li>Закрытые встречи клуба</li>
+                        <li>Гарантия возврата 1 день</li>
+                    </ul>
+                    <div class="pricing-button-wrapper">
+                        <a href="#" class="btn-pricing btn-primary-pricing">Стать участником</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Месячный тариф -->
-            <div class="pricing-card pricing-featured">
-                <div class="pricing-badge">Рекомендуем</div>
-                <div class="pricing-header">
-                    <h3>Месячный</h3>
-                    <div class="price">
-                        <span class="amount">1 500₽</span>
-                        <span class="period">/ месяц</span>
+            <div class="pricing-guarantee">
+                <p>💎 <strong>Гарантия возврата:</strong> Если в течение 1 дня вы поймете, что клуб вам не подходит — вернем деньги без вопросов</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ЛОКАЦИЙ (СОТЫ) -->
+    <section class="locations-section" id="locations">
+        <div class="container">
+            <h2 class="section-title">Локации, которые мы открыли</h2>
+            <p class="section-subtitle">Каждое место проверено лично — от троп до лучших точек для заката</p>
+
+            <div class="honeycomb">
+                <!-- Верхний ряд: 3 локации -->
+                <div class="hex-row">
+                    <div class="hex-shadow">
+                        <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1551524559-5af45d5450bd?q=80&w=900&auto=format&fit=crop');">
+                            <span class="hex-overlay"></span>
+                            <span class="hex-label">Ольхон</span>
+                        </a>
                     </div>
-                    <div class="savings">Экономия 83%</div>
+                    <div class="hex-shadow">
+                        <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=900&auto=format&fit=crop');">
+                            <span class="hex-overlay"></span>
+                            <span class="hex-label">Бухта Песчаная</span>
+                        </a>
+                    </div>
+                    <div class="hex-shadow">
+                        <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=900&auto=format&fit=crop');">
+                            <span class="hex-overlay"></span>
+                            <span class="hex-label">Листвянка</span>
+                        </a>
+                    </div>
                 </div>
-                <p class="pricing-description">Все обновления + приоритетная поддержка на весь месяц</p>
-                <ul class="pricing-features">
-                    <li>Все из дневного тарифа</li>
-                    <li>Новые маршруты каждую неделю</li>
-                    <li>Эксклюзивные скидки от партнеров</li>
-                    <li>Приоритетная поддержка 24/7</li>
-                    <li>Закрытые встречи клуба</li>
-                    <li>Гарантия возврата 1 день</li>
-                </ul>
-                <div class="pricing-button-wrapper">
-                    <a href="#" class="btn-pricing btn-primary-pricing">Стать участником</a>
+                <!-- Нижний ряд: 1 локация по центру -->
+                <div class="hex-row">
+                    <div class="hex-shadow">
+                        <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop');">
+                            <span class="hex-overlay"></span>
+                            <span class="hex-label">Аршан</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="pricing-guarantee">
-            <p>💎 <strong>Гарантия возврата:</strong> Если в течение 1 дня вы поймете, что клуб вам не подходит — вернем деньги без вопросов</p>
-        </div>
-    </div>
-</section>
     <script>
         // Хедер становится непрозрачным при скролле
         const header = document.querySelector('.header');
@@ -851,46 +832,6 @@
                 header.classList.remove('scrolled');
             }
         });
-    <!-- БЛОК ЛОКАЦИЙ (СОТЫ) -->
-<section class="locations-section" id="locations">
-    <div class="container">
-        <h2 class="section-title">Локации, которые мы открыли</h2>
-        <p class="section-subtitle">Каждое место проверено лично — от троп до лучших точек для заката</p>
-
-        <div class="honeycomb">
-            <!-- Верхний ряд: 3 локации -->
-            <div class="hex-row">
-                <div class="hex-shadow">
-                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1551524559-5af45d5450bd?q=80&w=900&auto=format&fit=crop');">
-                        <span class="hex-overlay"></span>
-                        <span class="hex-label">Ольхон</span>
-                    </a>
-                </div>
-                <div class="hex-shadow">
-                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=900&auto=format&fit=crop');">
-                        <span class="hex-overlay"></span>
-                        <span class="hex-label">Бухта Песчаная</span>
-                    </a>
-                </div>
-                <div class="hex-shadow">
-                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=900&auto=format&fit=crop');">
-                        <span class="hex-overlay"></span>
-                        <span class="hex-label">Листвянка</span>
-                    </a>
-                </div>
-            </div>
-            <!-- Нижний ряд: 1 локация по центру -->
-            <div class="hex-row">
-                <div class="hex-shadow">
-                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop');">
-                        <span class="hex-overlay"></span>
-                        <span class="hex-label">Аршан</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
     </script>
 
 </body>
