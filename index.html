@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Твой Ориентир | Закрытый клуб путешествий по Байкалу</title>
+    <meta name="description" content="Проверенные маршруты, гиды и базы отдыха на Байкале от местного жителя. Авторские гайды и оффлайн-карты для самостоятельных путешественников.">
+    
+    <!-- Шрифты: Playfair Display (заголовки) + Manrope (текст) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #0F1419;
+            --color-surface: #1A2028;
+            --color-text: #F5F3EF;
+            --color-text-muted: #A8B0BC;
+            --color-accent: #D4A76A;
+            --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== ХЕДЕР ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--color-text);
+        }
+
+        .nav .btn {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .nav .btn:hover {
+            background-color: #E5B87B;
+            color: var(--color-bg);
+        }
+
+        /* ===== ПЕРВЫЙ ЭКРАН (SPLIT-SCREEN) ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            min-height: 100svh; /* Для мобильных браузеров */
+        }
+
+        /* Левая часть — медиа */
+        .hero-media {
+            position: relative;
+            background-color: #1A2028;
+            background-image: 
+                linear-gradient(135deg, rgba(15, 20, 25, 0.3) 0%, rgba(15, 20, 25, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+
+        .hero-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 60%, var(--color-bg) 100%);
+            pointer-events: none;
+        }
+
+        /* Правая часть — контент */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 80px;
+            background-color: var(--color-bg);
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--color-text-muted);
+            max-width: 480px;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 18px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #E5B87B;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 18px 8px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-text);
+        }
+
+        /* ===== БЛОК ДОВЕРИЯ ===== */
+        .trust-section {
+            padding: 100px 48px;
+            background-color: var(--color-surface);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background-color: rgba(212, 167, 106, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .trust-item h3 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .trust-item p {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-media {
+                min-height: 50vh;
+                min-height: 50svh;
+            }
+
+            .hero-media::after {
+                background: linear-gradient(180deg, transparent 60%, var(--color-bg) 100%);
+            }
+
+            .hero-content {
+                padding: 48px 24px 80px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .header {
+                padding: 20px 24px;
+            }
+
+            .trust-section {
+                padding: 60px 24px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 32px 20px 60px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .btn-primary {
+                padding: 16px 28px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ХЕДЕР -->
+    <header class="header">
+        <a href="/" class="logo">Твой <span>Ориентир</span></a>
+        <nav class="nav">
+            <a href="#about">О клубе</a>
+            <a href="#blog">Блог</a>
+            <a href="#partners">Партнерам</a>
+            <a href="#pricing" class="btn">Стать участником</a>
+        </nav>
+    </header>
+
+    <!-- ПЕРВЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="hero-media"></div>
+        <div class="hero-content">
+            <span class="hero-label">Закрытый клуб путешественников</span>
+            <h1 class="hero-title">
+                Байкал без толп <em>и наценок</em>
+            </h1>
+            <p class="hero-subtitle">
+                Проверенные маршруты, гиды и базы отдыха от местного жителя. 
+                Авторские гайды и оффлайн-карты для самостоятельных путешествий.
+            </p>
+            <div class="hero-actions">
+                <a href="#pricing" class="btn-primary">
+                    Стать участником клуба
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#about" class="btn-secondary">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ДОВЕРИЯ -->
+    <section class="trust-section" id="about">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon">🧭</div>
+                <h3>Проверено лично</h3>
+                <p>Каждая база и маршрут протестированы мной. Чек-лист из 50+ пунктов: от качества постельного белья до вежливости персонала.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">🤝</div>
+                <h3>Только местные</h3>
+                <p>Работаю напрямую с гидами и владельцами баз, без посредников и наценок. Эксклюзивные бонусы для участников клуба.</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">📱</div>
+                <h3>Поддержка 24/7</h3>
+                <p>На связи во время вашего путешествия. Помогу решить любой вопрос на месте: от сломавшейся машины до смены маршрута.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Хедер становится непрозрачным при скролле
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
