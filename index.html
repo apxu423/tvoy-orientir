@@ -607,6 +607,122 @@
         font-size: 36px;
     }
 }
+    /* ===== БЛОК ЛОКАЦИЙ (СОТЫ) ===== */
+.locations-section {
+    padding: 100px 36px;
+    background-color: var(--color-surface);
+}
+
+.honeycomb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+}
+
+.hex-row {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+}
+
+/* Соты внахлёст, как в пчелиных сотах */
+.hex-row + .hex-row {
+    margin-top: -62px;
+}
+
+.hex-shadow {
+    filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+    transition: transform 0.35s ease;
+}
+
+.hex-shadow:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.hex {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 260px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: relative;
+    text-decoration: none;
+}
+
+/* Затемнение снизу для читаемости текста */
+.hex-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 20, 25, 0) 40%, rgba(15, 20, 25, 0.8) 100%);
+}
+
+.hex-label {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text);
+    text-align: center;
+    padding-bottom: 52px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== АДАПТИВНОСТЬ СОТ ===== */
+@media (max-width: 968px) {
+    .locations-section {
+        padding: 60px 18px;
+    }
+
+    .hex {
+        width: 190px;
+        height: 220px;
+    }
+
+    .hex-row {
+        gap: 16px;
+    }
+
+    .hex-row + .hex-row {
+        margin-top: -45px;
+    }
+
+    .hex-label {
+        font-size: 17px;
+        padding-bottom: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .honeycomb {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .hex-row {
+        display: contents;
+    }
+
+    .hex-row + .hex-row {
+        margin-top: 0;
+    }
+
+    .hex {
+        width: 160px;
+        height: 185px;
+    }
+
+    .hex-label {
+        font-size: 15px;
+        padding-bottom: 34px;
+    }
+}
     </style>
 </head>
 <body>
@@ -735,6 +851,46 @@
                 header.classList.remove('scrolled');
             }
         });
+    <!-- БЛОК ЛОКАЦИЙ (СОТЫ) -->
+<section class="locations-section" id="locations">
+    <div class="container">
+        <h2 class="section-title">Локации, которые мы открыли</h2>
+        <p class="section-subtitle">Каждое место проверено лично — от троп до лучших точек для заката</p>
+
+        <div class="honeycomb">
+            <!-- Верхний ряд: 3 локации -->
+            <div class="hex-row">
+                <div class="hex-shadow">
+                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1551524559-5af45d5450bd?q=80&w=900&auto=format&fit=crop');">
+                        <span class="hex-overlay"></span>
+                        <span class="hex-label">Ольхон</span>
+                    </a>
+                </div>
+                <div class="hex-shadow">
+                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?q=80&w=900&auto=format&fit=crop');">
+                        <span class="hex-overlay"></span>
+                        <span class="hex-label">Бухта Песчаная</span>
+                    </a>
+                </div>
+                <div class="hex-shadow">
+                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=900&auto=format&fit=crop');">
+                        <span class="hex-overlay"></span>
+                        <span class="hex-label">Листвянка</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Нижний ряд: 1 локация по центру -->
+            <div class="hex-row">
+                <div class="hex-shadow">
+                    <a href="#" class="hex" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop');">
+                        <span class="hex-overlay"></span>
+                        <span class="hex-label">Аршан</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     </script>
 
 </body>
