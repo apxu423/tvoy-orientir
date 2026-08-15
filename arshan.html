@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аршан | Твой Ориентир</title>
+    <meta name="description" content="Аршан — минеральные источники, водопады и буддийские дацаны у подножия Восточных Саян. Авторский маршрут от местного жителя.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #0F1419;
+            --color-surface: #1A2028;
+            --color-text: #F5F3EF;
+            --color-text-muted: #A8B0BC;
+            --color-accent: #D4A76A;
+            --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(15, 20, 25, 0.7) 0%, transparent 100%);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .header-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .header-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header-link:hover {
+            color: var(--color-text);
+        }
+
+        .header-btn {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-btn:hover {
+            background-color: #E5B87B;
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .split-media {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background-color: #1A2028;
+            background-image:
+                linear-gradient(180deg, rgba(15, 20, 25, 0.2) 0%, rgba(15, 20, 25, 0.4) 100%),
+                url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .media-caption {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(245, 243, 239, 0.7);
+        }
+
+        .split-content {
+            padding: 140px 80px 100px;
+            background-color: var(--color-bg);
+        }
+
+        .loc-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+
+        .loc-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .loc-title {
+            font-family: var(--font-heading);
+            font-size: clamp(40px, 4.5vw, 60px);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .loc-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--color-text-muted);
+            margin-bottom: 56px;
+            max-width: 480px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .fact-card {
+            background-color: var(--color-surface);
+            border-radius: 16px;
+            padding: 20px 24px;
+        }
+
+        .fact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+        }
+
+        .fact-value {
+            font-family: var(--font-heading);
+            font-size: 17px;
+            color: var(--color-text);
+        }
+
+        .section-h {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            padding-left: 20px;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .content-text {
+            color: var(--color-text-muted);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+        }
+
+        .quote {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--color-text);
+            padding: 32px 36px;
+            background-color: var(--color-surface);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 64px;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 16px;
+            font-family: var(--font-body);
+            font-style: normal;
+            font-size: 14px;
+            color: var(--color-accent);
+        }
+
+        .spots {
+            margin-bottom: 64px;
+        }
+
+        .spot {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(245, 243, 239, 0.08);
+        }
+
+        .spot:first-child {
+            padding-top: 0;
+        }
+
+        .spot-number {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+
+        .spot-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .spot-text {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .warning {
+            background-color: var(--color-surface);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 64px;
+        }
+
+        .warning-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+        }
+
+        .warning ul {
+            list-style: none;
+        }
+
+        .warning li {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            padding: 8px 0 8px 24px;
+            position: relative;
+        }
+
+        .warning li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .inline-photo {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 48px;
+        }
+
+        .inline-photo img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cta-block {
+            padding-top: 16px;
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .cta-text {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            margin-bottom: 32px;
+            max-width: 440px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #E5B87B;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 16px 8px;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-text);
+        }
+
+        .footer-mini {
+            padding: 32px 80px;
+            border-top: 1px solid rgba(245, 243, 239, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-mini p {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
+        .footer-mini a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-mini a:hover {
+            color: var(--color-text);
+        }
+
+        @media (max-width: 968px) {
+            .header {
+                padding: 20px 24px;
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .split-media {
+                position: relative;
+                height: 60vh;
+            }
+
+            .split-content {
+                padding: 64px 24px 80px;
+            }
+
+            .facts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-mini {
+                padding: 24px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .split-content {
+                padding: 48px 20px 60px;
+            }
+
+            .loc-subtitle {
+                font-size: 16px;
+            }
+
+            .quote {
+                font-size: 17px;
+                padding: 24px;
+            }
+
+            .spot {
+                grid-template-columns: 44px 1fr;
+                gap: 16px;
+            }
+
+            .spot-number {
+                font-size: 22px;
+            }
+
+            .inline-photo img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ХЕДЕР -->
+    <header class="header">
+        <a href="./" class="logo">Твой <span>Ориентир</span></a>
+        <div class="header-right">
+            <a href="./" class="header-link">← На главную</a>
+            <a href="./#pricing" class="header-btn">Стать участником</a>
+        </div>
+    </header>
+
+    <!-- SPLIT-SCREEN -->
+    <main class="split">
+        <!-- Левая часть: залипшее фото -->
+        <div class="split-media">
+            <span class="media-caption">Аршан · Восточные Саяны</span>
+        </div>
+
+        <!-- Правая часть: контент -->
+        <article class="split-content">
+            <span class="loc-label">Локация № 04</span>
+            <h1 class="loc-title">Аршан</h1>
+            <p class="loc-subtitle">Священные источники у подножия Восточных Саян. Место силы, где горы встречаются с буддийской культурой Бурятии.</p>
+
+            <!-- Ключевые факты -->
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <div class="fact-label">Сезон</div>
+                    <div class="fact-value">Июнь — сентябрь</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-label">Зимний сезон</div>
+                    <div class="fact-value">Январь — март</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-label">От Иркутска</div>
+                    <div class="fact-value">130 км, 2 часа</div>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-label">Бюджет</div>
+                    <div class="fact-value">от 3 000 ₽ / день</div>
+                </div>
+            </div>
+
+            <!-- Личная рекомендация -->
+            <div class="quote">
+                «Аршан — это совсем другой мир, не Байкал. Здесь тише, выше, медитативнее. Если Байкал — это энергия и масштаб, то Саяны — это покой и глубина. Сюда нужно ехать, когда душа просит перезагрузки».
+                <span class="quote-author">— Владислав Копылов, основатель клуба</span>
+            </div>
+
+            <!-- Точки маршрута -->
+            <h2 class="section-h">Что не пропустить</h2>
+            <div class="spots">
+                <div class="spot">
+                    <div class="spot-number">01</div>
+                    <div>
+                        <div class="spot-title">Водопады на Кынгарге</div>
+                        <p class="spot-text">Тропа вдоль горной реки ведёт к каскаду водопадов. Маршрут 11 км туда-обратно, набор высоты 300 м. Летом — купание в чистейшей воде, осенью — золотые лиственницы.</p>
+                    </div>
+                </div>
+                <div class="spot">
+                    <div class="spot-number">02</div>
+                    <div>
+                        <div class="spot-title">Бурятский дацан</div>
+                        <p class="spot-text">Буддийский храм у подножия гор. Здесь живут монахи, можно поучаствовать в утренней службе. Атмосфера Тибета в сердце Сибири — мощное место.</p>
+                    </div>
+                </div>
+                <div class="spot">
+                    <div class="spot-number">03</div>
+                    <div>
+                        <div class="spot-title">Минеральные источники</div>
+                        <p class="spot-text">Знаменитые "аршаны" (в переводе — "целебная вода"). Несколько источников разной температуры. Местные советуют источник "Глазной" для зрения и "Желудочный" для пищеварения.</p>
+                    </div>
+                </div>
+                <div class="spot">
+                    <div class="spot-number">04</div>
+                    <div>
+                        <div class="spot-title">Пик Любви</div>
+                        <p class="spot-text">Смотровая площадка с панорамой на всю Тункинскую долину. Подъём 2-3 часа, но вид того стоит. На закате — невероятные цвета, видно монгольские горы.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline-photo">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200&auto=format&fit=crop" alt="Горы Восточных Саян">
+            </div>
+
+            <!-- Чего избегать -->
+            <h2 class="section-h">Чего избегать</h2>
+            <div class="warning">
+                <div class="warning-title">Заметки местного</div>
+                <ul>
+                    <li>Не планируйте поход к водопадам без трекинговых ботинок — тропа каменистая, после дождя очень скользкая.</li>
+                    <li>Не пейте воду из источников литрами — она сильно минерализована. Максимум стакан в день, иначе будет обратный эффект.</li>
+                    <li>Не игнорируйте погоду: в горах она меняется за 30 минут. Летом обязательно дождевик и тёплая кофта, даже если внизу +25.</li>
+                    <li>Не проезжайте мимо села Хойто-Гол: там горячие термальные источники под открытым небом (40°C зимой!). Знают только местные.</li>
+                    <li>Обязательно попробуйте бурятские позы (буузы) — в Аршане их лепят по-настоящему, как в Улан-Удэ.</li>
+                </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-block">
+                <h2 class="cta-title">Готовы к горам?</h2>
+                <p class="cta-text">В клубе — проверенные гостевые дома, контакты местных гидов и трек к водопадам с точками для фото.</p>
+                <div class="cta-actions">
+                    <a href="./#pricing" class="btn-primary">Открыть базу клуба</a>
+                    <a href="#" class="btn-secondary">Скачать маршрут</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- ФУТЕР -->
+    <footer class="footer-mini">
+        <p>© 2026 Твой Ориентир. ИП Копылов В.С.</p>
+        <a href="./">← Вернуться на главную</a>
+    </footer>
+
+</body>
+</html>
