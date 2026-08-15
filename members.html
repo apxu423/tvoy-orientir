@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Твой Ориентир</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-bg: #0F1419;
+            --color-surface: #1A2028;
+            --color-text: #F5F3EF;
+            --color-text-muted: #A8B0BC;
+            --color-accent: #D4A76A;
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Manrope', -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* ===== ЭКРАН ВХОДА ===== */
+        .gate {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .gate-card {
+            background-color: var(--color-surface);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .gate-logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: 32px;
+            display: inline-block;
+            text-decoration: none;
+            color: var(--color-text);
+        }
+
+        .gate-logo span { color: var(--color-accent); }
+
+        .gate-title {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .gate-text {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .gate-input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 100px;
+            border: 2px solid rgba(245, 243, 239, 0.1);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 15px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .gate-input:focus { border-color: var(--color-accent); }
+
+        .gate-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 100px;
+            border: none;
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .gate-btn:hover { background-color: #E5B87B; }
+
+        .gate-error {
+            color: #E57373;
+            font-size: 13px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .gate-back {
+            display: inline-block;
+            margin-top: 24px;
+            color: var(--color-text-muted);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .gate-back:hover { color: var(--color-text); }
+
+        /* ===== КАБИНЕТ ===== */
+        .dashboard { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 48px;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 1px solid rgba(245, 243, 239, 0.2);
+            color: var(--color-text-muted);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover { border-color: var(--color-text); color: var(--color-text); }
+
+        .welcome {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .welcome-sub {
+            color: var(--color-text-muted);
+            font-size: 15px;
+            margin-bottom: 48px;
+        }
+
+        .dash-section-title {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 500;
+            margin: 48px 0 24px;
+            padding-left: 16px;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background-color: var(--color-surface);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .member-card:hover { transform: translateY(-4px); border-color: var(--color-accent); }
+
+        .member-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .member-card p {
+            color: var(--color-text-muted);
+            font-size: 13px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 100px;
+            background-color: rgba(212, 167, 106, 0.12);
+            color: var(--color-accent);
+        }
+
+        .card-btn {
+            text-align: center;
+            padding: 12px;
+            border-radius: 100px;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .card-btn:hover { background-color: var(--color-accent); color: var(--color-bg); }
+
+        .verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #81C784;
+            margin-bottom: 12px;
+        }
+
+        .support-box {
+            background-color: var(--color-surface);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .support-box p { color: var(--color-text-muted); font-size: 14px; max-width: 480px; }
+
+        @media (max-width: 640px) {
+            .gate-card { padding: 36px 24px; }
+            .dash-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ЭКРАН ВХОДА -->
+    <div class="gate" id="gate">
+        <div class="gate-card">
+            <a href="./" class="gate-logo">Твой <span>Ориентир</span></a>
+            <h1 class="gate-title">Закрытая зона</h1>
+            <p class="gate-text">Доступ только для участников клуба. Введите пароль, который вы получили после оплаты.</p>
+            <input type="password" class="gate-input" id="passwordInput" placeholder="Пароль участника">
+            <button class="gate-btn" id="loginBtn">Войти в кабинет</button>
+            <p class="gate-error" id="gateError">Неверный пароль. Проверьте и попробуйте ещё раз.</p>
+            <a href="./" class="gate-back">← Вернуться на главную</a>
+        </div>
+    </div>
+
+    <!-- ЛИЧНЫЙ КАБИНЕТ -->
+    <div class="dashboard" id="dashboard" hidden>
+        <div class="dash-header">
+            <a href="./" class="gate-logo">Твой <span>Ориентир</span></a>
+            <button class="logout-btn" id="logoutBtn">Выйти</button>
+        </div>
+
+        <h1 class="welcome">Здравствуйте, путешественник!</h1>
+        <p class="welcome-sub">Ваш доступ активен. Вот всё, что открыто для вас сегодня.</p>
+
+        <!-- МАРШРУТЫ -->
+        <h2 class="dash-section-title">Авторские маршруты</h2>
+        <div class="dash-grid">
+            <div class="member-card">
+                <h3>Ольхон за 3 дня</h3>
+                <div class="card-meta"><span class="meta-tag">3 дня</span><span class="meta-tag">Средняя сложность</span></div>
+                <p>Мыс Бурхан на рассвете, север до Хобоя, восточный берег без туристов.</p>
+                <a href="olkhon.html" class="card-btn">Открыть маршрут</a>
+            </div>
+            <div class="member-card">
+                <h3>Бухта Песчаная</h3>
+                <div class="card-meta"><span class="meta-tag">2 дня</span><span class="meta-tag">Лёгкая</span></div>
+                <p>Ходульные деревья, Бакланий камень, закат с Большой Колокольни.</p>
+                <a href="peschanaya.html" class="card-btn">Открыть маршрут</a>
+            </div>
+            <div class="member-card">
+                <h3>Листвянка на выходные</h3>
+                <div class="card-meta"><span class="meta-tag">2 дня</span><span class="meta-tag">Лёгкая</span></div>
+                <p>Камень Черского, нерпинарий, рынок с омулем и Тальцы по дороге.</p>
+                <a href="listvyanka.html" class="card-btn">Открыть маршрут</a>
+            </div>
+            <div class="member-card">
+                <h3>Аршан и Саяны</h3>
+                <div class="card-meta"><span class="meta-tag">2 дня</span><span class="meta-tag">Средняя сложность</span></div>
+                <p>Водопады Кынгарги, дацан, источники и пик Любви на закате.</p>
+                <a href="arshan.html" class="card-btn">Открыть маршрут</a>
+            </div>
+        </div>
+
+        <!-- БАЗА ПАРТНЕРОВ -->
+        <h2 class="dash-section-title">База проверенных партнеров</h2>
+        <div class="dash-grid">
+            <div class="member-card">
+                <span class="verified">✓ Проверено лично</span>
+                <h3>Гостевой дом «У Байкала»</h3>
+                <p>Хужир, Ольхон. Тёплые номера, домашняя кухня, баня. Хозяин — Сергей, рыбак.</p>
+                <a href="#" class="card-btn">Контакты и цены</a>
+            </div>
+            <div class="member-card">
+                <span class="verified">✓ Проверено лично</span>
+                <h3>Гид Батор</h3>
+                <p>Север Ольхона на УАЗе. Знает каждую тропу, рассказывает легенды. 5000₽/день.</p>
+                <a href="#" class="card-btn">Контакты и цены</a>
+            </div>
+            <div class="member-card">
+                <span class="verified">✓ Проверено лично</span>
+                <h3>Трансфер «Байкал-Драйв»</h3>
+                <p>Иркутск — Хужир, Иркутск — Листвянка. Надёжные водители, детское кресло.</p>
+                <a href="#" class="card-btn">Контакты и цены</a>
+            </div>
+        </div>
+
+        <!-- ГАЙДЫ -->
+        <h2 class="dash-section-title">Библиотека гайдов</h2>
+        <div class="dash-grid">
+            <div class="member-card">
+                <h3>Пропуск в нацпарк за 5 минут</h3>
+                <p>Пошаговая инструкция оформления онлайн + список документов.</p>
+                <a href="#" class="card-btn">Скачать PDF</a>
+            </div>
+            <div class="member-card">
+                <h3>Аптечка на Байкал</h3>
+                <p>Полный список: от клещей до горной болезни. Что купить в аптеке Иркутска.</p>
+                <a href="#" class="card-btn">Скачать PDF</a>
+            </div>
+            <div class="member-card">
+                <h3>Чек-лист сборов</h3>
+                <p>Что взять летом и зимой. Одежда, снаряжение, документы, наличные.</p>
+                <a href="#" class="card-btn">Скачать PDF</a>
+            </div>
+        </div>
+
+        <!-- ПОДДЕРЖКА -->
+        <h2 class="dash-section-title">Поддержка</h2>
+        <div class="support-box">
+            <p>Вопрос во время путешествия? Сломалась машина, изменилась погода, нужен совет — пишите, я на связи.</p>
+            <a href="mailto:vladislav@tvoy-orientir.ru" class="card-btn" style="padding: 14px 28px;">Написать Владиславу</a>
+        </div>
+    </div>
+
+    <script>
+        // ВРЕМЕННОЕ РЕШЕНИЕ ДЛЯ MVP. Пароль участника клуба.
+        const MEMBER_PASSWORD = 'BAIKAL2026';
+
+        const gate = document.getElementById('gate');
+        const dashboard = document.getElementById('dashboard');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const passwordInput = document.getElementById('passwordInput');
+        const gateError = document.getElementById('gateError');
+
+        // Если уже вошли в этой сессии — показываем кабинет сразу
+        if (sessionStorage.getItem('member_access') === 'true') {
+            gate.style.display = 'none';
+            dashboard.hidden = false;
+        }
+
+        loginBtn.addEventListener('click', () => {
+            if (passwordInput.value === MEMBER_PASSWORD) {
+                sessionStorage.setItem('member_access', 'true');
+                gate.style.display = 'none';
+                dashboard.hidden = false;
+            } else {
+                gateError.style.display = 'block';
+            }
+        });
+
+        // Вход по нажатию Enter
+        passwordInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') loginBtn.click();
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('member_access');
+            location.reload();
+        });
+    </script>
+
+</body>
+</html>
